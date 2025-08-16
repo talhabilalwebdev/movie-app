@@ -1,7 +1,6 @@
-<!-- only render form if not redirecting -->
 <div *ngIf="!loading" class="container d-flex justify-content-center align-items-center vh-100">
   <div class="col-md-4">
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
       <mat-form-field appearance="outline" class="w-100 mb-3">
         <mat-label>Username</mat-label>
         <input matInput formControlName="username" />
@@ -12,17 +11,21 @@
         <input matInput type="password" formControlName="password" />
       </mat-form-field>
 
+      <mat-form-field appearance="outline" class="w-100 mb-3">
+        <mat-label>Confirm Password</mat-label>
+        <input matInput type="password" formControlName="confirmPassword" />
+      </mat-form-field>
+
       <button mat-raised-button color="primary" type="submit" class="w-100">
-        Login
+        Register
       </button>
 
-      <a class="" style="font-size: .8em;" [routerLink]="['/register']" routerLinkActive="active">
-        New User? Register Here
+      <a class="" style="font-size: .8em;" [routerLink]="['/login']" routerLinkActive="active">
+        Existing User? Login Here
       </a>
 
-      <div *ngIf="errorMessage" class="text-danger mt-2">
-        {{ errorMessage }}
-      </div>
+      <div *ngIf="errorMessage" class="text-danger mt-2">{{ errorMessage }}</div>
+      <div *ngIf="successMessage" class="text-success mt-2">{{ successMessage }}</div>
     </form>
   </div>
 </div>

@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { AuthService } from '../services/auth.service';
-import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-login',
@@ -16,29 +17,33 @@ import { Router } from '@angular/router';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    RouterModule
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   errorMessage = '';
+  loading = true; // <-- prevent template render before redirect check
 
-  // Inject Router here
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
     });
 
-    // Redirect if already logged in using router injected here
-    if (this.authService.getAuthStatus()) {
-      this.router.navigate(['/movies']);
-    }
-
     this.loginForm.valueChanges.subscribe(() => {
       this.errorMessage = '';
     });
+  }
+
+  ngOnInit(): void {
+    if (this.authService.getAuthStatus()) {
+      this.router.navigate(['/movies']);
+    } else {
+      this.loading = false; // allow template to render
+    }
   }
 
   onSubmit() {
