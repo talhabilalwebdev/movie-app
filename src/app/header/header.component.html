@@ -1,0 +1,18 @@
+<mat-toolbar class="dark-toolbar" *ngIf="authService.getAuthStatus()" >
+  <mat-icon>video_library</mat-icon>
+  <a routerLink="/movies" routerLinkActive="active-link" class="app-title">
+    Movies Hub
+  </a>
+
+  <span class="spacer"></span>
+
+  <!-- Menu items in a row -->
+  <a mat-button routerLink="/movies" routerLinkActive="active-link">Movies</a>
+
+  <span class="spacer"></span>
+
+  <!-- Logout button -->
+  <button mat-button *ngIf="authService.getAuthStatus()" (click)="logout()" class="logoutButton">
+    Logout <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>

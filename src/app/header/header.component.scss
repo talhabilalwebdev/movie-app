@@ -1,0 +1,88 @@
+.dark-toolbar {
+  background-color: var(--mat-sys-primary);
+  color: white;
+}
+
+.logoutButton {
+  background-color: var(--mat-sys-primary-fixed-dim);
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.search-field {
+  width: 250px;
+  margin-right: 16px;
+}
+
+.dark-toolbar {
+  background-color: var(--bs-dark);
+  /* Angular Material Indigo 500 */
+  color: white;
+}
+
+.app-title {
+  margin-left: 8px;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 8px;
+  text-decoration: none;
+  color: white;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+}
+
+.search-field {
+  width: 250px;
+}
+
+/* Primary outline border color override */
+.primary-outline.mat-form-field-appearance-outline .mat-form-field-outline {
+  border-color: #3f51b5;
+  /* Primary color */
+  border-width: 2px;
+}
+
+.primary-outline.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline {
+  border-color: #303f9f;
+  /* Darker primary on focus */
+  border-width: 2px;
+}
+
+.mat-mdc-form-field-subscript-wrapper,
+.mat-mdc-form-field-bottom-align::before {
+  height: 0px !important;
+  line-height: 0px !important;
+  margin-bottom: 20px;
+}
+
+.dark-toolbar {
+
+
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  a[mat-button] {
+    color: white;
+    font-size: 14px;
+    text-transform: none;
+  }
+
+  .active-link {
+    font-weight: bold;
+    border-bottom: 2px solid white;
+  }
+}
